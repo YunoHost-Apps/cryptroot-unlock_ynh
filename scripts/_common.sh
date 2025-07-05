@@ -21,7 +21,7 @@ EOF
 
 add_dropbear_options() {
   sed -i '/^DROPBEAR_OPTIONS=/d' "$DROPBEAR_INITRAMFS_DIR/dropbear.conf" || true
-  echo "DROPBEAR_OPTIONS=\"-p $port -s -j -k -i 60\"" >> "$DROPBEAR_INITRAMFS_DIR/dropbear.conf"
+  echo "DROPBEAR_OPTIONS=\"-p $port -s -j -k -I 60\"" >> "$DROPBEAR_INITRAMFS_DIR/dropbear.conf"
 }
 
 # Credits:

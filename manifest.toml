@@ -20,6 +20,9 @@ helpers_version = "2.1"
 architectures = "all"
 multi_instance = false
 
+ldap = "not_relevant"
+sso = "not_relevant"
+
 disk = "10M"
 ram.build = "5M"
 ram.runtime = "5M"

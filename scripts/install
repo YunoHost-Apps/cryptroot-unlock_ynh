@@ -30,6 +30,7 @@ ynh_script_progression "Adding $app's configuration files..."
 
 configure_initramfs
 
+touch $DROPBEAR_INITRAMFS_DIR/authorized_keys
 
 if [ -n "${user_reuse_authorized_keys:-}" ]; then
   user_home="$(getent passwd $user_reuse_authorized_keys | cut -d : -f 6)"

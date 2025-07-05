@@ -8,13 +8,13 @@ version = "1.0"
 
     [main.network]
         [main.network.iface]
-        name = "Network interface at boot"
+        ask = "Network interface at boot"
         type = "string"
         help = "Interface on which dropbear (the SSH server) should listen when booting"
         bind = "null"
 
         [main.network.ip]
-        name = "Static IP address at boot"
+        ask  = "Static IP address at boot"
         type = "string"
         help = "IP address that should be set for dropbear."
         pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
@@ -22,7 +22,7 @@ version = "1.0"
         bind = "null"
 
         [main.network.mask]
-        name = "Mask at boot"
+        ask  = "Mask at boot"
         type = "string"
         help = "Mask that should be set for dropbear."
         pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
@@ -30,7 +30,7 @@ version = "1.0"
         bind = "null"
 
         [main.network.gateway]
-        name = "Gateway at boot"
+        ask  = "Gateway at boot"
         type = "string"
         help = "Gateway that should be set for dropbear."
         pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
@@ -39,6 +39,7 @@ version = "1.0"
 
     [main.security]
         [main.security.authorized_keys]
-        name = "Authorized SSH keys at boot"
+        ask  = "Authorized SSH keys at boot"
         type = "text"
+        optional = true
         bind = "/etc/dropbear/initramfs/authorized_keys"

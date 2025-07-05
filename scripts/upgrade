@@ -12,6 +12,8 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
+touch $DROPBEAR_INITRAMFS_DIR/authorized_keys
+
 configure_initramfs
 
 add_dropbear_options

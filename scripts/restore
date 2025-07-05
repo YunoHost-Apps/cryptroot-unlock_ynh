@@ -21,6 +21,11 @@ ynh_restore "$DROPBEAR_INITRAMFS_DIR"
 chown -R "root:root" "$DROPBEAR_INITRAMFS_DIR"
 chmod -R 600 "$DROPBEAR_INITRAMFS_DIR"
 
+# Don't enable dropbear unless told.
+# if [ "${enable_dropbear:-}" != "true" ]; then
+#   systemctl disable dropbear
+# fi
+
 #=================================================
 # INITRAMFS
 #=================================================

@@ -1,13 +1,4 @@
 #!/bin/bash
-# In simple cases, you don't need a config script.
-
-# With a simple config_panel.toml, you can write in the app settings, in the
-# upstream config file or replace complete files (logo ...) and restart services.
-
-# The config scripts allows you to go further, to handle specific cases
-# (validation of several interdependent fields, specific getter/setter for a value,
-# display dynamic informations or choices, pre-loading of config type .cube... ).
-
 #=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
@@ -16,10 +7,6 @@ source /usr/share/yunohost/helpers
 source _common.sh
 
 ynh_abort_if_errors
-
-#=================================================
-# RETRIEVE ARGUMENTS
-#=================================================
 
 #=================================================
 # SPECIFIC GETTERS FOR TOML SHORT KEY
@@ -38,8 +25,27 @@ get__mask() {
 }
 
 get__gateway() {
-  ynh_app_setting_get --key=mask
+  ynh_app_setting_get --key=gateway
 }
+
+# get__enable_dropbear() {
+#   if systemctl is-active dropbear; then
+#     echo 1
+#   else
+#     echo 0
+#   fi
+# }
+
+#=================================================
+# SPECIFIC VALIDATORS FOR TOML SHORT KEYS
+#=================================================
+
+validate__iface() {
+  if ip -j a | jq -r ".[].ifname" | grep -Fxq "$iface"; then
+    echo "This does not seem to be a network interface recognized by your server"
+  fi
+}
+
 
 #=================================================
 # SPECIFIC SETTERS FOR TOML SHORT KEYS
@@ -63,6 +69,14 @@ set__gateway() {
     ynh_app_setting_set --key=gateway --value="$gateway"
     configure_initramfs
 }
+
+# set__enable_dropbear() {
+#   if [ "$enable_dropbear" -eq "1" ]; then
+#     systemctl enable dropbear
+#   else
+#     systemctl disable dropbear
+#   fi
+# }
 
 #=================================================
 ynh_app_config_run "$1"

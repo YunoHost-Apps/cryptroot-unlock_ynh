@@ -14,16 +14,12 @@ ynh_script_progression "Updating $app's configuration files..."
 
 configure_initramfs
 
-if [ -n "${reuse_authorized_keys:-}" ] && [ -f "$reuse_authorized_keys/.ssh/authorized_keys" ]; then
-  cp "$reuse_authorized_keys/.ssh/authorized_keys" $DROPBEAR_INITRAMFS_DIR/authorized_keys
-fi
-
-if [ -n "$authorized_keys" ]; then
-  echo "" >> $DROPBEAR_INITRAMFS_DIR/authorized_keys
-  echo "$authorized_keys" >> $DROPBEAR_INITRAMFS_DIR/authorized_keys
-fi
-
 add_dropbear_options
+
+# Don't enable dropbear unless told.
+# if [ "${enable_dropbear:-}" != "true" ]; then
+#   systemctl disable dropbear
+# fi
 
 #=================================================
 # INITRAMFS

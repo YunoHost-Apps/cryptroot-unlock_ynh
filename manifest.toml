@@ -28,10 +28,10 @@ ram.runtime = "5M"
     [install.iface]
     type = "string"
     ask.en = "Select the network interface which dropbear (the SSH server) will allow you to connect. The IP address, mask, gateway, will be detected and defined as is for dropbear."
-    ask.en = "Sélectionnez l'interface réseau pour laquelle dropbear (le serveur SSH) autorisera les connexions. L'adresse IP, le masque et la passerelle seront détectés et défini tel quel pour dropbear."
+    ask.fr = "Sélectionnez l'interface réseau pour laquelle dropbear (le serveur SSH) autorisera les connexions. L'adresse IP, le masque et la passerelle seront détectés et défini tel quel pour dropbear."
 
-    [install.reuse_authorized_keys]
-    type = "boolean"
+    [install.user_reuse_authorized_keys]
+    type = "user"
     optional = true
     ask.en = "Select a user you would like to copy the authorized SSH keys to unlock your paritions (optional)"
     ask.fr = "Choisissez un utilisateur pour qui vous souhaitez réutiliser les clé SSH autorisées à déverrouiller vos partitions (optionnel)"
@@ -41,6 +41,12 @@ ram.runtime = "5M"
     optional = true
     ask.en = "Additional authorized SSH keys you would like to allow unlocking your paritions (optional)"
     ask.fr = "Clés SSH supplémentaires à autoriser à se connecter pour déverrouiller les partitions (optionnel)"
+
+    # [install.enable_dropbear]
+    # type = "boolean"
+    # default = false
+    # ask.en = "Once the partitions is unlocked, should dropbear remain active? (in most cases, you may not)"
+    # ask.fr = "Une fois les partitions déverrouillées, doit-on laisser dropbear actif? (dans la plupart des cas, c'est un bon choix ne pas le laisser)"
 
 [resources]
     # See the packaging documentation for the full set

@@ -11,34 +11,40 @@ version = "1.0"
         name = "Network interface at boot"
         type = "string"
         help = "Interface on which dropbear (the SSH server) should listen when booting"
-        bind = null
+        bind = "null"
 
         [main.network.ip]
         name = "Static IP address at boot"
         type = "string"
-        help = "IP address that should be set by dropbear"
+        help = "IP address that should be set for dropbear."
         pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
-        pattern.error = "Please fill an IP address"
-        bind = null
+        pattern.error = "Please fill an IP v4 address"
+        bind = "null"
 
         [main.network.mask]
         name = "Mask at boot"
         type = "string"
-        help = "Mask that should be set by dropbear"
+        help = "Mask that should be set for dropbear."
         pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
-        pattern.error = "Please fill an IP address"
-        bind = null
+        pattern.error = "Please fill an IP v4 address"
+        bind = "null"
 
         [main.network.gateway]
         name = "Gateway at boot"
         type = "string"
-        help = "Gateway that should be set by dropbear"
+        help = "Gateway that should be set for dropbear."
         pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
-        pattern.error = "Please fill an IP address"
-        bind = null
+        pattern.error = "Please fill an IP v4 address"
+        bind = "null"
 
     [main.security]
         [main.security.authorized_keys]
         name = "Authorized SSH keys at boot"
         type = "text"
         bind = "/etc/dropbear/initramfs/authorized_keys"
+
+        # [main.security.enable_dropbear]
+        # name = "Keep dropbear active after unlocking partitions "
+        # help = "Probably not useful, you may probably uncheck it for security reasons."
+        # type = "boolean"
+        # bind = "null"

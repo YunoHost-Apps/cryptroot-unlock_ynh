@@ -4,7 +4,7 @@ INITRAMFS_CONF=/etc/initramfs-tools/initramfs.conf
 DROPBEAR_INITRAMFS_DIR=/etc/dropbear/initramfs
 
 unconfigure_initramfs() {
-  sed -i  '/^#---BEGIN CRYPTROOT_UNLOCK_YNH/,/^#---END CRYPTROOT_UNLOCK_YNH/d' "$INITRAMFS_CONF"
+  sed -i  '/^#---BEGIN CRYPTROOT_UNLOCK_YNH/,/^#---END CRYPTROOT_UNLOCK_YNH/d' "$INITRAMFS_CONF" || true
 }
 
 configure_initramfs() {
@@ -14,14 +14,14 @@ configure_initramfs() {
 #---BEGIN CRYPTROOT_UNLOCK_YNH
 BUSYBOX=y
 DROPBEAR=y
-IP=$IP:$GATEWAY:$MASK::$IFACE
+IP=$ip:$gateway:$mask::$iface
 #---END CRYPTROOT_UNLOCK_YNH
 EOF
 }
 
 add_dropbear_options() {
-  sed -i '/^DROPBEAR_OPTIONS=/d' "$DROPBEAR_INITRAMFS_DIR/dropbear.conf"
-  echo "DROPBEAR_OPTIONS=\"-p $PORT -s -j -k -I 60\"" >> "$DROPBEAR_INITRAMFS_DIR/dropbear.conf"
+  sed -i '/^DROPBEAR_OPTIONS=/d' "$DROPBEAR_INITRAMFS_DIR/dropbear.conf" || true
+  echo "DROPBEAR_OPTIONS=\"-p $port -s -j -k -i 60\"" >> "$DROPBEAR_INITRAMFS_DIR/dropbear.conf"
 }
 
 # Credits:

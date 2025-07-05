@@ -42,12 +42,6 @@ ram.runtime = "5M"
     ask.en = "Additional authorized SSH keys you would like to allow unlocking your paritions (optional)"
     ask.fr = "Clés SSH supplémentaires à autoriser à se connecter pour déverrouiller les partitions (optionnel)"
 
-    # [install.enable_dropbear]
-    # type = "boolean"
-    # default = false
-    # ask.en = "Once the partitions is unlocked, should dropbear remain active? (in most cases, you may not)"
-    # ask.fr = "Une fois les partitions déverrouillées, doit-on laisser dropbear actif? (dans la plupart des cas, c'est un bon choix ne pas le laisser)"
-
 [resources]
     # See the packaging documentation for the full set
     # of explanation regarding the behavior and properties for each of those

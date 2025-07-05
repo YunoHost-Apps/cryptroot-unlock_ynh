@@ -42,9 +42,3 @@ version = "1.0"
         name = "Authorized SSH keys at boot"
         type = "text"
         bind = "/etc/dropbear/initramfs/authorized_keys"
-
-        # [main.security.enable_dropbear]
-        # name = "Keep dropbear active after unlocking partitions "
-        # help = "Probably not useful, you may probably uncheck it for security reasons."
-        # type = "boolean"
-        # bind = "null"

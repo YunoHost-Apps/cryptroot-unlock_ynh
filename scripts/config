@@ -28,14 +28,6 @@ get__gateway() {
   ynh_app_setting_get --key=gateway
 }
 
-# get__enable_dropbear() {
-#   if systemctl is-active dropbear; then
-#     echo 1
-#   else
-#     echo 0
-#   fi
-# }
-
 #=================================================
 # SPECIFIC VALIDATORS FOR TOML SHORT KEYS
 #=================================================
@@ -69,14 +61,6 @@ set__gateway() {
     ynh_app_setting_set --key=gateway --value="$gateway"
     configure_initramfs
 }
-
-# set__enable_dropbear() {
-#   if [ "$enable_dropbear" -eq "1" ]; then
-#     systemctl enable dropbear
-#   else
-#     systemctl disable dropbear
-#   fi
-# }
 
 #=================================================
 ynh_app_config_run "$1"

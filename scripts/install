@@ -49,11 +49,6 @@ fi
 
 add_dropbear_options
 
-# Don't enable dropbear unless told.
-# if [ "${enable_dropbear:-}" != "true" ]; then
-#   systemctl disable dropbear
-# fi
-
 #=================================================
 # INITRAMFS
 #=================================================

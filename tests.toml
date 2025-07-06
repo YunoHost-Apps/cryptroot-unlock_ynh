@@ -8,3 +8,17 @@ test_format = 1.0
     # Tests to run
     # ------------
     args.iface="eth0"
+
+[copy-authorized-keys]
+    args.iface="eth0"
+    args.user_reuse_authorized_keys='package_checker'
+    args.authorized_keys='ssh-key-3'
+    preinstall = """
+    set -x
+    sudo mkdir /home/package_checker/.ssh
+    sudo chmod 700 /home/package_checker/.ssh
+    sudo echo -e "ssh-key-1\nssh-key-2" > /home/package_checker/.ssh/authorized_keys
+    sudo chmod 600 /home/package_checker/.ssh/authorized_keys
+
+    echo "✅ End of preinstall"
+    """

@@ -4,7 +4,7 @@ Vous pouvez ajouter un alias sur vos machines pour
 lesquels vous avez autorisé à déverrouiller vos partitions.
 
 Cela vous facilitera à vous connecter ensuite à
-votre server en SSH au moment du boot:
+votre serveur en SSH au moment du boot:
 
 ```
 Host ynh-boot
@@ -17,7 +17,7 @@ Host ynh-boot
     IdentityFile /PATH/TO/YOUR/.ssh/KEY
 ```
 
-Une fois cela fait, redémarrez votre server et déverrouillez
+Une fois cela fait, redémarrez votre serveur et déverrouillez
 votre partition au démarrage, en lançant simplement :
 
 ```bash

@@ -40,8 +40,8 @@ if [ -n "${user_reuse_authorized_keys:-}" ]; then
 fi
 
 if [ -n "${authorized_keys:-}" ]; then
-  echo "" >> $DROPBEAR_INITRAMFS_DIR/authorized_keys
-  echo "$authorized_keys" >> $DROPBEAR_INITRAMFS_DIR/authorized_keys
+  echo "" >> "$DROPBEAR_INITRAMFS_DIR/authorized_keys"
+  echo "$authorized_keys" >> "$DROPBEAR_INITRAMFS_DIR/authorized_keys"
 fi
 
 if [ -f "$DROPBEAR_INITRAMFS_DIR/authorized_keys" ]; then

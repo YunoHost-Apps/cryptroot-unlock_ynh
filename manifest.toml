@@ -30,20 +30,26 @@ ram.runtime = "5M"
 [install]
     [install.iface]
     type = "string"
-    ask.en = "Select the network interface which dropbear (the SSH server) will allow you to connect. The IP address, mask, gateway, will be detected and defined as is for dropbear."
-    ask.fr = "Sélectionnez l'interface réseau pour laquelle dropbear (le serveur SSH) autorisera les connexions. L'adresse IP, le masque et la passerelle seront détectés et défini tel quel pour dropbear."
+    ask.en = "Select the network interface that dropbear (the SSH server) will listen on during boot"
+    ask.fr = "Sélectionnez l'interface réseau sur laquelle dropbear (le serveur SSH) écoutera au démarrage"
+    help.en = "The IP address, mask, and gateway will be automatically deduced during the app installation"
+    help.fr = "L'adresse IP, le masque et la passerelle seront déduis automatiquement durant l'installation de l'application"
 
     [install.user_reuse_authorized_keys]
     type = "user"
     optional = true
-    ask.en = "Select a user you would like to copy the authorized SSH keys to unlock your paritions (optional)"
-    ask.fr = "Choisissez un utilisateur pour qui vous souhaitez réutiliser les clé SSH autorisées à déverrouiller vos partitions (optionnel)"
+    ask.en = "(Optional) Select a user whose authorized SSH keys will be copied for dropbear during the installation"
+    ask.fr = "(Optionnel) Sélectionnez un utilisateur dont les clés SSH autorisées seront copiées pour dropbear durant l'installation"
+    help.en = "These SSH keys will be allowed to connect during the system boot and to unlock your partitions"
+    help.fr = "Ces clés SSH seront autorisées à se connecter durant le démarrage du système pour déverrouiller vos partitions"
 
     [install.authorized_keys]
     type = "text"
     optional = true
-    ask.en = "Additional authorized SSH keys you would like to allow unlocking your paritions (optional)"
-    ask.fr = "Clés SSH supplémentaires à autoriser à se connecter pour déverrouiller les partitions (optionnel)"
+    ask.en = "(Optional) Add extra SSH public keys allowed to unlock your partitions"
+    ask.fr = "(Optionnel) Ajoutez des clés SSH publiques supplémentaires autorisées à déverrouiller vos partitions"
+    help.en = "These SSH keys will be allowed to connect during the system boot and to unlock your partitions"
+    help.fr = "Ces clés SSH seront autorisées à se connecter durant le démarrage du système pour déverrouiller vos partitions"
 
 [resources]
     # See the packaging documentation for the full set
@@ -54,4 +60,4 @@ ram.runtime = "5M"
     main.default = 2222
 
     [resources.apt]
-    packages = "dropbear-initramfs initramfs-tools"
+    packages = "busybox dropbear-initramfs initramfs-tools"

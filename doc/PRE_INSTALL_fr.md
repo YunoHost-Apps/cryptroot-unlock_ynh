@@ -18,7 +18,7 @@ si nécessaire.
 
 Ce paquet modifie la façon dont votre serveur démarre.
 
-Il vous est proposé sans aucune garrantie, comme précisé dans sa LICENSE.
+Il vous est proposé sans aucune garantie, comme précisé dans sa LICENSE.
 Son auteur et ses contributeur/rices rejettent toute responsabilité en cas de souci
 qui pourrait survenir après l'installation, en dépit des efforts pour s'assurer
 de sa fiabilité.

@@ -23,7 +23,7 @@ Son auteur et ses contributeur/rices rejettent toute responsabilité en cas de s
 qui pourrait survenir après l'installation, en dépit des efforts pour s'assurer
 de sa fiabilité.
 
-**Vous êtes responsables de contrôler ce que fait le paquet sur votre server.**
+**Vous êtes responsable de contrôler ce que fait le paquet sur votre server.**
 
 Il vous est recommandé de créer des sauvegarde de votre serveur et de les
 copier ailleurs (ce qui est une bonne pratique dans tous les cas).

@@ -1,0 +1,45 @@
+version = "1.0"
+
+################################################################################
+#### ABOUT PANELS
+################################################################################
+
+[main]
+
+    [main.network]
+        [main.network.iface]
+        ask = "Network interface at boot"
+        type = "string"
+        help = "Network interface (e.g., enp3s0) that dropbear (the SSH server) will listen on during system boot."
+        bind = "null"
+
+        [main.network.ip]
+        ask  = "Static IP address at boot"
+        type = "string"
+        help = "Static IPv4 address to assign for SSH access during boot."
+        pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
+        pattern.error = "Please fill an IP v4 address"
+        bind = "null"
+
+        [main.network.mask]
+        ask  = "Mask at boot"
+        type = "string"
+        help = "Subnet mask to use with the static IP for SSH access at boot."
+        pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
+        pattern.error = "Please fill an IP v4 address"
+        bind = "null"
+
+        [main.network.gateway]
+        ask  = "Gateway at boot"
+        type = "string"
+        help = "Gateway IP address for network access during boot."
+        pattern.regexp = '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
+        pattern.error = "Please fill an IP v4 address"
+        bind = "null"
+
+    [main.security]
+        [main.security.authorized_keys]
+        ask  = "Authorized SSH keys at boot"
+        type = "text"
+        optional = true
+        bind = "/etc/dropbear/initramfs/authorized_keys"

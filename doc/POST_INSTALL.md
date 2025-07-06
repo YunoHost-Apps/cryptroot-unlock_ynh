@@ -24,17 +24,21 @@ Host ynh-boot
     User root
     Port __PORT__
     Hostname __IP__
-    RemoteCommand cryptroot-unlock
 
     # Optional. Required only if that's not your default key.
     # ⚠️ The below path needs to be adapted
     IdentityFile /PATH/TO/YOUR/.ssh/KEY
 ```
 
-Then unlock your partitions at startup simply by running:
+Once this is done, reboot your server and unlock your partitions at startup simply by running:
 
 ```bash
 ssh ynh-boot
+```
+
+Then run:
+```
+cryptroot-unlock
 ```
 
 And enter your passphrase when prompted.

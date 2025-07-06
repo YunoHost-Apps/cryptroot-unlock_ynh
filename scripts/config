@@ -45,21 +45,25 @@ validate__iface() {
 set__iface() {
     ynh_app_setting_set --key=iface --value="$iface"
     configure_initramfs
+    update-initramfs -k all -u
 }
 
 set__ip() {
     ynh_app_setting_set --key=ip --value="$ip"
     configure_initramfs
+    update-initramfs -k all -u
 }
 
 set__mask() {
     ynh_app_setting_set --key=mask --value="$mask"
     configure_initramfs
+    update-initramfs -k all -u
 }
 
 set__gateway() {
     ynh_app_setting_set --key=gateway --value="$gateway"
     configure_initramfs
+    update-initramfs -k all -u
 }
 
 #=================================================

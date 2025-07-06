@@ -66,5 +66,10 @@ set__gateway() {
     update-initramfs -k all -u
 }
 
+set__authorized_keys() {
+    echo "$authorized_keys" > "/etc/dropbear/initramfs/authorized_keys"
+    update-initramfs -k all -u
+}
+
 #=================================================
 ynh_app_config_run "$1"

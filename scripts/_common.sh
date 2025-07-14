@@ -4,13 +4,13 @@ INITRAMFS_CONF=/etc/initramfs-tools/initramfs.conf
 DROPBEAR_INITRAMFS_DIR=/etc/dropbear/initramfs
 
 unconfigure_initramfs() {
-  sed -i  '/^#---BEGIN CRYPTROOT_UNLOCK_YNH/,/^#---END CRYPTROOT_UNLOCK_YNH/d' "$INITRAMFS_CONF" || true
+    sed -i  '/^#---BEGIN CRYPTROOT_UNLOCK_YNH/,/^#---END CRYPTROOT_UNLOCK_YNH/d' "$INITRAMFS_CONF" || true
 }
 
 configure_initramfs() {
-  unconfigure_initramfs # Remove previous configuration beforehand
+    unconfigure_initramfs # Remove previous configuration beforehand
 
-  cat <<EOF >> "$INITRAMFS_CONF"
+    cat <<EOF >> "$INITRAMFS_CONF"
 #---BEGIN CRYPTROOT_UNLOCK_YNH
 BUSYBOX=y
 DROPBEAR=y
@@ -20,8 +20,8 @@ EOF
 }
 
 add_dropbear_options() {
-  sed -i '/^DROPBEAR_OPTIONS=/d' "$DROPBEAR_INITRAMFS_DIR/dropbear.conf" || true
-  echo "DROPBEAR_OPTIONS=\"-p $port -s -j -k -I 60\"" >> "$DROPBEAR_INITRAMFS_DIR/dropbear.conf"
+    sed -i '/^DROPBEAR_OPTIONS=/d' "$DROPBEAR_INITRAMFS_DIR/dropbear.conf" || true
+    echo "DROPBEAR_OPTIONS=\"-p $port -s -j -k -I 60\"" >> "$DROPBEAR_INITRAMFS_DIR/dropbear.conf"
 }
 
 # Credits:

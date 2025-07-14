@@ -21,7 +21,6 @@ Unlock through SSH your partitions encrypted with LUKS
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/cryptroot-unlock)](https://ci-apps.yunohost.org/ci/apps/cryptroot-unlock/)
 
-🛠️ Upstream cryptroot unlock repository: <>
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/cryptroot-unlock_ynh/tree/testing).
 
 The `testing` branch can be tested using:

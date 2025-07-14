@@ -12,7 +12,6 @@ version = "1.0~ynh1"
 maintainers = ["fflorent"]
 
 [upstream]
-license = "AGPL-3.0-or-later"
 
 [integration]
 yunohost = ">= 12.0.9"

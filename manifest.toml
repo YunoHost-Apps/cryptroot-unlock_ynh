@@ -7,11 +7,12 @@ name = "cryptroot unlock"
 description.en = "Unlock through SSH your partitions encrypted with LUKS"
 description.fr = "Déverrouillez via SSH vos partitions chiffrées via LUKS"
 
-version = "1.0~ynh1"
+version = "1.0~ynh2"
 
 maintainers = ["fflorent"]
 
 [upstream]
+license = "AGPL-3.0-or-later"
 
 [integration]
 yunohost = ">= 12.0.9"

@@ -4,8 +4,8 @@ It shall NOT be edited by hand.
 -->
 
 <h1>
-  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/cryptroot-unlock.png" width="32px" alt="Logo of cryptroot unlock">
-  cryptroot unlock, packaged for YunoHost
+  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/cryptroot-unlock.png" width="32px" alt="Logo of Cryptroot unlock">
+  Cryptroot unlock, packaged for YunoHost
 </h1>
 
 Unlock through SSH your partitions encrypted with LUKS
@@ -19,7 +19,7 @@ Unlock through SSH your partitions encrypted with LUKS
 
 
 ## Screenshots
-![Screenshot of cryptroot unlock](./doc/screenshots/example.jpg)
+![Screenshot of Cryptroot unlock](./doc/screenshots/example.jpg)
 
 ## 📦 Developer info
 

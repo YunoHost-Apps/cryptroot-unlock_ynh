@@ -1,6 +1,4 @@
-# __APP__ installed
-
-Congrats, the app __APP__ is installed!
+Congrats, __APP__ is installed!
 
 You may reboot and try to unlock your partitions by running the following command
 using a remote machine and an authorized key:

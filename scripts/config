@@ -13,19 +13,19 @@ ynh_abort_if_errors
 #=================================================
 
 get__iface() {
-  ynh_app_setting_get --key=iface
+    ynh_app_setting_get --key=iface
 }
 
 get__ip() {
-  ynh_app_setting_get --key=ip
+    ynh_app_setting_get --key=ip
 }
 
 get__mask() {
-  ynh_app_setting_get --key=mask
+    ynh_app_setting_get --key=mask
 }
 
 get__gateway() {
-  ynh_app_setting_get --key=gateway
+    ynh_app_setting_get --key=gateway
 }
 
 #=================================================
@@ -33,9 +33,9 @@ get__gateway() {
 #=================================================
 
 validate__iface() {
-  if ip -j a | jq -r ".[].ifname" | grep -Fxq "$iface"; then
-    echo "This does not seem to be a network interface recognized by your server"
-  fi
+    if ip -j a | jq -r ".[].ifname" | grep -Fxq "$iface"; then
+        echo "This does not seem to be a network interface recognized by your server"
+    fi
 }
 
 

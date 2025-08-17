@@ -1,6 +1,4 @@
-# cryptroot-unlock
-
-## Avant-propos
+### Avant-propos
 
 Vous êtes sur le point d'installer une app Yunohost pour vous permettre
 de déverrouiller vos partitions chiffrées via SSH.
@@ -14,7 +12,7 @@ les réutiliser durant le démarrage du système. Vous êtes invité/e à vérif
 leur valeur dans le panneau de configuration après l'installation et les modifier
 si nécessaire.
 
-## Dégagement de responsabilité
+### Dégagement de responsabilité
 
 Ce paquet modifie la façon dont votre serveur démarre.
 

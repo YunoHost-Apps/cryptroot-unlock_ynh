@@ -1,5 +1,3 @@
-# cryptroot-unlock
-
 This package allows you to unlock your encrypted partitions when booting your server.
 
 **⚠️IMPORTANT**: This package will not encrypt your partitions,

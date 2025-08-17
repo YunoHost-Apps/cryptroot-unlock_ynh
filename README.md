@@ -10,18 +10,21 @@ It shall NOT be edited by hand.
 
 Unlock through SSH your partitions encrypted with LUKS
 
-[![Version: 1.0~ynh1](https://img.shields.io/badge/Version-1.0~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/cryptroot-unlock/)
+[![Version: 1.0~ynh2](https://img.shields.io/badge/Version-1.0~ynh2-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/cryptroot-unlock/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/cryptroot-unlock"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
 <a href="https://github.com/YunoHost-Apps/cryptroot-unlock_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
 
+
+## Screenshots
+![Screenshot of cryptroot unlock](./doc/screenshots/example.jpg)
+
 ## 📦 Developer info
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/cryptroot-unlock)](https://ci-apps.yunohost.org/ci/apps/cryptroot-unlock/)
 
-🛠️ Upstream cryptroot unlock repository: <>
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/cryptroot-unlock_ynh/tree/testing).
 
 The `testing` branch can be tested using:

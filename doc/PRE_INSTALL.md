@@ -1,6 +1,4 @@
-# cryptroot-unlock
-
-## Foreword
+### Foreword
 
 You're about to install a Yunohost app to let you unlock your encrypted
 partitions using SSH.
@@ -13,7 +11,7 @@ mask, gateway, as set during the installation and reuse them during the boot.
 You may check the values in the config panel after the installation and change
 them if necessary.
 
-## Disclaimer of warranty
+### Disclaimer of warranty
 
 This package applies some changes on how your server boots.
 

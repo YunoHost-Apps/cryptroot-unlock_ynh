@@ -1,5 +1,3 @@
-# cryptroot-unlock
-
 Ce paquet vous permet de déverrouiller vos partitions chiffrées quand vous 
 démarrez votre serveur.
 

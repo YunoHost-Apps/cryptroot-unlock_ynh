@@ -3,9 +3,9 @@
 packaging_format = 2
 
 id = "cryptroot-unlock"
-name = "cryptroot unlock"
+name = "Cryptroot unlock"
 description.en = "Unlock through SSH your partitions encrypted with LUKS"
-description.fr = "Déverrouillez via SSH vos partitions chiffrées via LUKS"
+description.fr = "Déverrouillez vos partitions LUKS chiffrées via SSH"
 
 version = "1.0~ynh2"
 

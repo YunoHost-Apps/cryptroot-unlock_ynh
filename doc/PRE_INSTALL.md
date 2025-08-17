@@ -1,5 +1,3 @@
-# cryptroot-unlock
-
 ## Foreword
 
 You're about to install a Yunohost app to let you unlock your encrypted

@@ -17,10 +17,6 @@ Unlock through SSH your partitions encrypted with LUKS
 <a href="https://github.com/YunoHost-Apps/cryptroot-unlock_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
 
-
-## Screenshots
-![Screenshot of Cryptroot unlock](./doc/screenshots/example.jpg)
-
 ## 📦 Developer info
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/cryptroot-unlock)](https://ci-apps.yunohost.org/ci/apps/cryptroot-unlock/)

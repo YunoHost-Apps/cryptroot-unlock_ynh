@@ -7,7 +7,7 @@ name = "Cryptroot unlock"
 description.en = "Unlock through SSH your partitions encrypted with LUKS"
 description.fr = "Déverrouillez vos partitions LUKS chiffrées via SSH"
 
-version = "1.0~ynh2"
+version = "1.0~ynh3"
 
 maintainers = ["fflorent"]
 

@@ -12,7 +12,7 @@ configure_initramfs() {
 
     cat <<EOF >> "$INITRAMFS_CONF"
 #---BEGIN CRYPTROOT_UNLOCK_YNH
-ip=$ip::$gateway:$mask::$iface
+IP=$ip::$gateway:$mask::$iface
 #---END CRYPTROOT_UNLOCK_YNH
 EOF
 }

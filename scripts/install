@@ -28,14 +28,23 @@ ynh_app_setting_set --key=gateway --value=$gateway
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
+# Bail out if no install questions regarding SSH keys have been answered 
+if [ -z "${user_reuse_authorized_keys:-}" ] && [ -z "${authorized_keys:-}" ]; then
+    ynh_die "You must set an SSH key (reusing an existing one and/or adding new ones) during the install questions in order to be granted remote access to your server after reboot."
+fi
+
 configure_initramfs
 
 touch $DROPBEAR_INITRAMFS_DIR/authorized_keys
 
 if [ -n "${user_reuse_authorized_keys:-}" ]; then
     user_home="$(getent passwd $user_reuse_authorized_keys | cut -d : -f 6)"
-    if [ -f "$user_home/.ssh/authorized_keys" ]; then
+    if [ -s "$user_home/.ssh/authorized_keys" ]; then
+        # The file exists and is not empty
         cp "$user_home/.ssh/authorized_keys" $DROPBEAR_INITRAMFS_DIR/authorized_keys
+    elif [ -z "${authorized_keys:-}" ]; then
+        # Selected user does not have a valid authorized_key file and no other key was set in install questions. 
+        ynh_die "The selected user doesn't have any valid key to use. You must set an SSH key (reusing an existing one and/or adding new ones) during the install questions in order to be granted remote access to your server after reboot."
     fi
 fi
 

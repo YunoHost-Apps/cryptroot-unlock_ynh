@@ -49,8 +49,14 @@ if [ -n "${user_reuse_authorized_keys:-}" ]; then
 fi
 
 if [ -n "${authorized_keys:-}" ]; then
-    echo "" >> "$DROPBEAR_INITRAMFS_DIR/authorized_keys"
-    echo "$authorized_keys" >> "$DROPBEAR_INITRAMFS_DIR/authorized_keys"
+    echo "" >> "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp"
+    echo "$authorized_keys" >> "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp"
+    if validate_authorized_keys_file "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp"; then
+        mv -f "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp" "$DROPBEAR_INITRAMFS_DIR/authorized_keys"
+    else
+        rm "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp"
+        ynh_die "Some of the SSH keys entered are invalid"
+    fi
 fi
 
 if [ -f "$DROPBEAR_INITRAMFS_DIR/authorized_keys" ]; then

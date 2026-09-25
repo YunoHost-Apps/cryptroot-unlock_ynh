@@ -70,13 +70,10 @@ set__authorized_keys() {
     if [ -z "$authorized_keys" ]; then
         ynh_die "You must set at least one authorized SSH key in order to be granted remote access to your server after reboot."
     fi
-    echo "$authorized_keys" > "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp"
-
-    if validate_authorized_keys_file "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp"; then
-        mv -f "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp" "$DROPBEAR_INITRAMFS_DIR/authorized_keys"
+    if validate_authorized_keys <<< "$authorized_keys"; then
+        echo "$authorized_keys" > "$DROPBEAR_INITRAMFS_DIR/authorized_keys"
         update-initramfs -k all -u
     else
-        rm "$DROPBEAR_INITRAMFS_DIR/authorized_keys.tmp"
         ynh_die "Some of the SSH keys entered are invalid"
     fi
 }

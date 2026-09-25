@@ -19,6 +19,14 @@ ynh_print_info "Declaring files to be backed up..."
 # BACKUP SYSTEM CONFIGURATION
 #=================================================
 
+# Check whether the backup is meaningful
+if [ ! -s "$DROPBEAR_INITRAMFS_DIR/authorized_keys" ]; then 
+    ynh_die "The $DROPBEAR_INITRAMFS_DIR/authorized_keys file does not exist or is empty, aborting."
+fi
+if ! validate_authorized_keys < "$DROPBEAR_INITRAMFS_DIR/authorized_keys"; then
+    ynh_die "The $DROPBEAR_INITRAMFS_DIR/authorized_keys file already exists but contains invalid keys, aborting."
+fi
+
 # Backup the PHP-FPM configuration
 ynh_backup "$INITRAMFS_CONF"
 ynh_backup "$DROPBEAR_INITRAMFS_DIR"

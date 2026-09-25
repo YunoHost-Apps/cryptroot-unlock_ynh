@@ -12,9 +12,12 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-touch $DROPBEAR_INITRAMFS_DIR/authorized_keys
-
-configure_initramfs
+if [ ! -s "$DROPBEAR_INITRAMFS_DIR/authorized_keys" ]; then 
+    ynh_die "The $DROPBEAR_INITRAMFS_DIR/authorized_keys file does not exist or is empty, aborting."
+fi
+if ! validate_authorized_keys < "$DROPBEAR_INITRAMFS_DIR/authorized_keys"; then
+    ynh_die "The $DROPBEAR_INITRAMFS_DIR/authorized_keys file already exists but contains invalid keys, aborting."
+fi
 
 add_dropbear_options
 

@@ -5,13 +5,29 @@ test_format = 1.0
 [default]
     args.iface="eth0"
     args.user_reuse_authorized_keys='package_checker'
-    args.authorized_keys='ssh-key-3'
+    args.authorized_keys='ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJ7kL2mN5pQ8rT1vW4xY6zA9bC3dE0fG7hI2jK5lM8n package_checker3@domain.tld'
     preinstall = """
     set -x
     sudo mkdir /home/package_checker/.ssh
     sudo chmod 700 /home/package_checker/.ssh
-    sudo echo -e "ssh-key-1\nssh-key-2" > /home/package_checker/.ssh/authorized_keys
+    sudo echo -e "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBu9xg8VwP2kL4mN7qR1sT5uY0aC3eF6hJ9kM2nP4qX package_checker1@domain.tld\nssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7mK2pR8vN4xT1yL5sG9hJ3dF6bW0cE2aU7iO5pQ1z package_checker2@domain.tld" > /home/package_checker/.ssh/authorized_keys
     sudo chmod 600 /home/package_checker/.ssh/authorized_keys
 
     echo "✅ End of preinstall"
     """
+
+#~ FIXME - check that `validate_authorized_keys()` works as expected by aborting scripts when ssh key with wrong format is supplied (e.g. "ssh-key-1"). But currently the test appears as failed - how to make is considered as a success if the script aborts?
+#~ [failed_SSH_validation]
+    #~ only = ["install.root"]
+    #~ args.iface="eth0"
+    #~ args.user_reuse_authorized_keys='package_checker'
+    #~ args.authorized_keys='ssh-key-3'
+    #~ preinstall = """
+    #~ set -x
+    #~ sudo mkdir /home/package_checker/.ssh
+    #~ sudo chmod 700 /home/package_checker/.ssh
+    #~ sudo echo -e "ssh-key-1\nssh-key-2" > /home/package_checker/.ssh/authorized_keys
+    #~ sudo chmod 600 /home/package_checker/.ssh/authorized_keys
+
+    #~ echo "✅ End of preinstall"
+    #~ """

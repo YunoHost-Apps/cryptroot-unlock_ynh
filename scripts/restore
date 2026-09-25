@@ -21,6 +21,14 @@ ynh_restore "$DROPBEAR_INITRAMFS_DIR"
 chown -R "root:root" "$DROPBEAR_INITRAMFS_DIR"
 chmod -R 600 "$DROPBEAR_INITRAMFS_DIR"
 
+# Make sure the backup to restore includes at least one valid SSH key
+if [ ! -s "$DROPBEAR_INITRAMFS_DIR/authorized_keys" ]; then 
+    ynh_die "The $DROPBEAR_INITRAMFS_DIR/authorized_keys file does not exist or is empty, aborting."
+fi
+if ! validate_authorized_keys < "$DROPBEAR_INITRAMFS_DIR/authorized_keys"; then
+    ynh_die "The $DROPBEAR_INITRAMFS_DIR/authorized_keys file already exists but contains invalid keys, aborting."
+fi
+
 #=================================================
 # INITRAMFS
 #=================================================

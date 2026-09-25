@@ -40,7 +40,7 @@ _validate_ssh_key() {
         ynh_print_info "Valid SSH key: $key_without_email"
         return 0
     else
-        ynh_print_info "Invalid SSH key: $key_without_email"
+        ynh_print_warn "Invalid SSH key: $key_without_email"
         return 1
     fi
 }

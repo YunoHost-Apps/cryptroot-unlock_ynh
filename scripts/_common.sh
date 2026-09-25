@@ -37,20 +37,18 @@ _validate_ssh_key() {
 
     # Regex check (credits: https://github.com/nemchik/ssh-key-regex)
     if [[ "$key_without_email" =~ ^(ssh-dss AAAAB3NzaC1kc3|ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNT|ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzOD|ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1Mj|sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb2|ssh-ed25519 AAAAC3NzaC1lZDI1NTE5|sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29t|ssh-rsa AAAAB3NzaC1yc2)[0-9A-Za-z+/]+[=]{0,3}(\s.*)?$ ]]; then
-        echo "Valid SSH key: $key_without_email"
+        ynh_print_info "Valid SSH key: $key_without_email"
         return 0
     else
-        echo "Invalid SSH key: $key_without_email"
+        ynh_print_info "Invalid SSH key: $key_without_email"
         return 1
     fi
 }
 
-validate_authorized_keys_file() {
-    local AUTHORIZED_KEY_FILE="$1"
-
+validate_authorized_keys() {
     while IFS= read -r line; do
         # Skip empty lines
         [[ -z "$line" ]] && continue
         _validate_ssh_key "$line"
-    done < "$AUTHORIZED_KEY_FILE"
+    done
 }

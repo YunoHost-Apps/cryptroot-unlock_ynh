@@ -49,10 +49,10 @@ if [ -n "${user_reuse_authorized_keys:-}" ]; then
 fi
 
 if [ -n "${authorized_keys:-}" ]; then
-    if [ -s "$DROPBEAR_INITRAMFS_DIR/authorized_keys" ] && ! validate_authorized_keys_file "$DROPBEAR_INITRAMFS_DIR/authorized_keys"; then
+    if [ -s "$DROPBEAR_INITRAMFS_DIR/authorized_keys" ] && ! validate_authorized_keys < "$DROPBEAR_INITRAMFS_DIR/authorized_keys"; then
         ynh_die "The $DROPBEAR_INITRAMFS_DIR/authorized_keys file already exists but contains invalid keys, aborting."
     fi
-    if ! validate_authorized_keys_file <<< "$authorized_keys"; then
+    if ! validate_authorized_keys <<< "$authorized_keys"; then
         ynh_die "Some of the SSH keys entered are invalid"
     fi
     echo "" >> "$DROPBEAR_INITRAMFS_DIR/authorized_keys"

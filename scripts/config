@@ -67,8 +67,15 @@ set__gateway() {
 }
 
 set__authorized_keys() {
-    echo "$authorized_keys" > "/etc/dropbear/initramfs/authorized_keys"
-    update-initramfs -k all -u
+    if [ -z "$authorized_keys" ]; then
+        ynh_die "You must set at least one authorized SSH key in order to be granted remote access to your server after reboot."
+    fi
+    if validate_authorized_keys <<< "$authorized_keys"; then
+        echo "$authorized_keys" > "$DROPBEAR_INITRAMFS_DIR/authorized_keys"
+        update-initramfs -k all -u
+    else
+        ynh_die "Some of the SSH keys entered are invalid"
+    fi
 }
 
 #=================================================

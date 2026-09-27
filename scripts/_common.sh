@@ -47,8 +47,10 @@ _validate_ssh_key() {
 
 validate_authorized_keys() {
     while IFS= read -r line; do
-        # Skip empty lines
-        [[ -z "$line" ]] && continue
-        _validate_ssh_key "$line"
+        # Remove comments
+        local cleaned_up_line="${line/\#*/}"
+        # Skip empty lines or lines containing only whitespaces
+        [[ "$cleaned_up_line" =~ ^[[::space:]]*$ ]] && continue
+        _validate_ssh_key "$cleaned_up_line"
     done
 }

@@ -5,7 +5,7 @@ test_format = 1.0
 [default]
     args.iface="eth0"
     args.user_reuse_authorized_keys='package_checker'
-    args.authorized_keys="ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOJWUhO\+waiB\+aKvXO0xC5XTL6P/X/TIzQ4hgdXkDfmAfntOj/HXRIu4GulCvJgUoyTiF5Qt9j9gK6Z17szUv3s= package_checker3@domain.tld"
+    args.authorized_keys="ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOJWUhO\\+waiB\\+aKvXO0xC5XTL6P/X/TIzQ4hgdXkDfmAfntOj/HXRIu4GulCvJgUoyTiF5Qt9j9gK6Z17szUv3s= package_checker3@domain.tld"
     preinstall = """
     set -x
     sudo mkdir /home/package_checker/.ssh

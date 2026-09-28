@@ -31,26 +31,27 @@ cidr_to_netmask() {
 
 _validate_ssh_key() {
     local key="$1"
-
-    # Keep only the portion of the string before the second space character (skip email if it is there)
-    local key_without_email=$(echo "$key" | cut -d' ' -f1-2)
-
-    # Regex check (credits: https://github.com/nemchik/ssh-key-regex)
-    if [[ "$key_without_email" =~ ^(ssh-dss AAAAB3NzaC1kc3|ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNT|ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzOD|ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1Mj|sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb2|ssh-ed25519 AAAAC3NzaC1lZDI1NTE5|sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29t|ssh-rsa AAAAB3NzaC1yc2)[0-9A-Za-z+/]+[=]{0,3}(\s.*)?$ ]]; then
-        ynh_print_info "Valid SSH key: $key_without_email"
+    if ssh-keygen -lf - <<< "$key" &>/dev/null; then
+        ynh_print_info "Valid SSH key: $key"
         return 0
     else
-        ynh_print_warn "Invalid SSH key: $key_without_email"
+        ynh_print_warn "Invalid SSH key: $key"
         return 1
     fi
 }
 
 validate_authorized_keys() {
+	local valid_keys=0
     while IFS= read -r line; do
         # Remove comments
         local cleaned_up_line="${line/\#*/}"
         # Skip empty lines or lines containing only whitespaces
         [[ "$cleaned_up_line" =~ ^[[::space:]]*$ ]] && continue
-        _validate_ssh_key "$cleaned_up_line"
+        _validate_ssh_key "$cleaned_up_line" && ((valid_keys++))
     done
+    if [ "$valid_keys" -ge 1 ]; then
+		return 0
+	else
+		return 1
+	fi
 }

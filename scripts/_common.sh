@@ -41,7 +41,7 @@ _validate_ssh_key() {
 }
 
 validate_authorized_keys() {
-	local valid_keys=0
+    local valid_keys=0
     while IFS= read -r line; do
         # Remove comments
         local cleaned_up_line="${line/\#*/}"
@@ -50,8 +50,8 @@ validate_authorized_keys() {
         _validate_ssh_key "$cleaned_up_line" && ((valid_keys++))
     done
     if [ "$valid_keys" -ge 1 ]; then
-		return 0
-	else
-		return 1
-	fi
+        return 0
+    else
+        return 1
+    fi
 }

@@ -9,6 +9,11 @@ les réutiliser durant le démarrage du système. Vous êtes invité·e à véri
 les valeurs dans le panneau de configuration après l'installation et les modifier
 si nécessaire.
 
+Assurez-vous d'entrer au moins une clé SSH valide (en réutilisant une clé d'un
+utilisateur choisi ou/et en ajoutant une clé manuellement) lors des questions
+qui suivent. Dans le cas contraire l'installation sera annulée afin que vous ne
+soyez pas bloqué hors de votre serveur au prochain redémarrage.
+
 ### Dégagement de responsabilité
 
 Ce paquet modifie la façon dont votre serveur démarre.

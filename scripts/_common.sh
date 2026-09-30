@@ -46,7 +46,7 @@ validate_authorized_keys() {
         # Remove comments
         local cleaned_up_line="${line/\#*/}"
         # Skip empty lines or lines containing only whitespaces
-        [[ "$cleaned_up_line" =~ ^[[::space:]]*$ ]] && continue
+        [[ "$cleaned_up_line" =~ ^[[:space:]]*$ ]] && continue
         _validate_ssh_key "$cleaned_up_line" && ((valid_keys++))
     done
     if [ "$valid_keys" -ge 1 ]; then

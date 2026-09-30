@@ -11,6 +11,11 @@ mask, gateway, as set during the installation and reuse them during the boot.
 You may check the values in the config panel after the installation and change
 them if necessary.
 
+Make sure to set at least one valid SSH key (by reusing a key of a selected user
+and/or by manually specifying it) during the install questions or
+the install will be cancelled so that you are not locked out of your server at 
+next reboot.
+
 ### Disclaimer of warranty
 
 This package applies some changes on how your server boots.

@@ -28,3 +28,30 @@ cidr_to_netmask() {
     value=$(( 0xffffffff ^ ((1 << (32 - $1)) - 1) ))
     echo "$(( (value >> 24) & 0xff )).$(( (value >> 16) & 0xff )).$(( (value >> 8) & 0xff )).$(( value & 0xff ))"
 }
+
+_validate_ssh_key() {
+    local key="$1"
+    if ssh-keygen -lf - <<< "$key" &>/dev/null; then
+        ynh_print_info "Valid SSH key: $key"
+        return 0
+    else
+        ynh_print_warn "Invalid SSH key: $key"
+        return 1
+    fi
+}
+
+validate_authorized_keys() {
+    local valid_keys=0
+    while IFS= read -r line; do
+        # Remove comments
+        local cleaned_up_line="${line/\#*/}"
+        # Skip empty lines or lines containing only whitespaces
+        [[ "$cleaned_up_line" =~ ^[[:space:]]*$ ]] && continue
+        _validate_ssh_key "$cleaned_up_line" && ((valid_keys++))
+    done
+    if [ "$valid_keys" -ge 1 ]; then
+        return 0
+    else
+        return 1
+    fi
+}

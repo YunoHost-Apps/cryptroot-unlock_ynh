@@ -39,8 +39,8 @@ touch $DROPBEAR_INITRAMFS_DIR/authorized_keys
 
 if [ -n "${user_reuse_authorized_keys:-}" ]; then
     user_home="$(getent passwd $user_reuse_authorized_keys | cut -d : -f 6)"
-    if [ -s "$user_home/.ssh/authorized_keys" ]; then
-        # The file exists and is not empty
+    if validate_authorized_keys < "$user_home/.ssh/authorized_keys"; then
+        # The file exists, is not empty and only contains valid key(s)
         cp "$user_home/.ssh/authorized_keys" $DROPBEAR_INITRAMFS_DIR/authorized_keys
     elif [ -z "${authorized_keys:-}" ]; then
         # Selected user does not have a valid authorized_key file and no other key was set in install questions. 

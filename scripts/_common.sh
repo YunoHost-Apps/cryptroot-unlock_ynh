@@ -41,15 +41,18 @@ _validate_ssh_key() {
 }
 
 validate_authorized_keys() {
+    local non_empty_lines=0
     local valid_keys=0
     while IFS= read -r line; do
         # Remove comments
         local cleaned_up_line="${line/\#*/}"
         # Skip empty lines or lines containing only whitespaces
         [[ "$cleaned_up_line" =~ ^[[:space:]]*$ ]] && continue
+        ((non_empty_lines++))
         _validate_ssh_key "$cleaned_up_line" && ((valid_keys++))
     done
-    if [ "$valid_keys" -ge 1 ]; then
+    if [ "$non_empty_lines" -ge 1 ] && [ "$valid_keys" -eq "$non_empty_lines" ]; then
+        # Success if at least one non-empty line and only valid keys
         return 0
     else
         return 1

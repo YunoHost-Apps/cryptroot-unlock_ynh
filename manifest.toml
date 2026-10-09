@@ -35,13 +35,21 @@ ram.runtime = "5M"
     help.en = "The IP address, mask, and gateway will be automatically deduced during the app installation"
     help.fr = "L'adresse IP, le masque et la passerelle seront déduis automatiquement durant l'installation de l'application"
 
+    [install.reuse_authorized_keys]
+    type = "boolean"
+    ask.en = "Reuse some Yunohost user's authorized keys?"
+    ask.fr = "Réutiliser les clés SSH authorisées (fichier `authorized_keys`) d'un utilisateur Yunohost ?"
+    help.en = "If you answer yes, you'll select the user during the next question."
+    help.fr = "Si vous répondez positivement, vous sélectionnerez l'utilisateur durant la prochaine question."
+
     [install.user_reuse_authorized_keys]
     type = "user"
+    ask.en = "Select a user whose authorized SSH keys will be copied for dropbear during the installation"
+    ask.fr = "Sélectionnez un utilisateur dont les clés SSH autorisées seront copiées pour dropbear durant l'installation"
     optional = true
-    ask.en = "(Optional) Select a user whose authorized SSH keys will be copied for dropbear during the installation"
-    ask.fr = "(Optionnel) Sélectionnez un utilisateur dont les clés SSH autorisées seront copiées pour dropbear durant l'installation"
-    help.en = "These SSH keys will be allowed to connect during the system boot and to unlock your partitions"
-    help.fr = "Ces clés SSH seront autorisées à se connecter durant le démarrage du système pour déverrouiller vos partitions"
+    visible = "reuse_authorized_keys == true"
+    help.en = "These SSH keys will be allowed to connect during the system boot and to unlock your partitions."
+    help.fr = "Ces clés SSH seront autorisées à se connecter durant le démarrage du système pour déverrouiller vos partitions."
 
     [install.authorized_keys]
     type = "text"
